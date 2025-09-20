@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Links</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+  
+</head>
+<body>
+  <!-- Hero -->
+  <div class="hero">
+    <img src="pizza.webp" alt="Profile">
+    <div class="overlay"></div>
+  </div>
+
+  <!-- Profile -->
+  <div class="profile">
+    <h1>Zaki Tom&Jerry%</h1>
+    <p>Entrepreneur | Chef | Visionary</p>
+  </div>
+
+  <!-- Social Links -->
+  <div class="links">
+    <a href="#" class="link"><i class="fab fa-linkedin"></i><span>LinkedIn</span></a>
+    <a href="#" class="link"><i class="fab fa-github"></i><span>GitHub</span></a>
+    <a href="#" class="link"><i class="fab fa-x-twitter"></i><span>Twitter</span></a>
+    <a href="#" class="link"><i class="fab fa-instagram"></i><span>Instagram</span></a>
+  </div>
+
+  <script>
+    const links = document.querySelectorAll('.link');
+
+    // Entry animation (staggered)
+    links.forEach((link, i) => {
+      setTimeout(() => {
+        link.classList.add('show');
+      }, i * 400 + 500);
+    });
+
+    // Golden sweep loop (staggered one after another)
+    function loopSweep() {
+      links.forEach((link, i) => {
+        setTimeout(() => {
+          link.classList.add('sweep');
+          setTimeout(() => link.classList.remove('sweep'), 1500);
+        }, i * 1200);
+      });
+    }
+
+    // Start sweeps after entry animation finished
+    setTimeout(() => {
+      loopSweep();
+      setInterval(loopSweep, links.length * 1200 + 3000); // pause then repeat
+    }, links.length * 400 + 1000);
+  </script>
+</body>
+</html>
